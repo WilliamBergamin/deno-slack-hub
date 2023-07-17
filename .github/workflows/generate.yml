@@ -27,3 +27,5 @@ jobs:
 
       - name: Get gh status
         run: gh status
+        env:
+           GH_TOKEN: ${{ github.token }}
