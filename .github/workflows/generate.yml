@@ -1,0 +1,26 @@
+name: Generate
+
+on:
+  push:
+    branches: [ main ]
+#   schedule:
+#     - cron:  '* * * * 1'
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    env:
+      # the version of deno used by Run on Slack (v1.31.1)
+      deno-version: v1.31.1
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+
+      - name: Setup Deno ${{ env.deno-version }}
+        uses: denoland/setup-deno@v1
+        with:
+          deno-version: ${{ env.deno-version }}
+
+      - name: Run generation script
+        run: ./scripts/generate
