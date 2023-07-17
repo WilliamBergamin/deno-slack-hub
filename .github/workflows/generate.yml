@@ -26,11 +26,14 @@ jobs:
         with:
           deno-version: ${{ env.deno-version }}
 
-    #   - name: Run generation script
-    #     run: ./scripts/generate
+      - name: Run generation script
+        run: ./scripts/generate
 
-      - name: git status
-        run: git status
+      - name: Commit changes
+        run: |
+           git branch new-generation
+           git add --all
+           git commit -m "new changes"
         env:
            GH_TOKEN: ${{ github.token }}
 
