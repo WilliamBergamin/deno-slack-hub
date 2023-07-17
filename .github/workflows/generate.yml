@@ -26,10 +26,10 @@ jobs:
         with:
           deno-version: ${{ env.deno-version }}
 
-      - name: Run generation script
-        run: ./scripts/generate
+    #   - name: Run generation script
+    #     run: ./scripts/generate
 
       - name: Get gh status
-        run: gh status
+        run: gh pr list
         env:
            GH_TOKEN: ${{ github.token }}
