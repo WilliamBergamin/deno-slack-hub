@@ -24,3 +24,6 @@ jobs:
 
       - name: Run generation script
         run: ./scripts/generate
+
+      - name: Get gh status
+        run: gh status
