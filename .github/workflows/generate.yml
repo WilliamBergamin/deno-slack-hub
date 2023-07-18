@@ -3,9 +3,7 @@ name: Generate
 on:
   push:
     branches: [ main ]
-#   schedule:
-#     - cron:  '* * * * 1'
-
+    
 jobs:
   generate:
     permissions:
@@ -41,6 +39,7 @@ jobs:
         run: |
             git checkout -b $BRANCH_NAME
             git commit -a -m "Latest generated changes"
+            git commit -a -m "Automated commit: Latest generated changes from schedule action"
 
       - name: Create Pull Request
         if: ${{ success() }}
