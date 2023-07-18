@@ -38,7 +38,7 @@ jobs:
            git checkout -b "new-branch"
            git add --all
            git commit -m "new changes"
-           git push
+           git push --set-upstream origin "new changes"
         env:
            GH_TOKEN: ${{ github.token }}
 
