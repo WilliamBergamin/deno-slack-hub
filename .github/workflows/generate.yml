@@ -47,7 +47,9 @@ jobs:
         run: |
             git push --set-upstream origin $BRANCH_NAME
             gh pr create -r "WilliamBergamin" --label "enhancement" --title "Latest generated changes" --body \
-            "## Summary
-            This PR introduces the latest generated changes to the typescript connectors enabling developpers to access the newest Slacks features"
+            "## 🚀 Automated Pull Request: Coded-Connectors Update
+            This PR brings the latest changes to coded-connectors, fueled by Slack's latest data. Developers can now access the newest features effortlessly.
+
+            *Github-Actions* 🤖"
         env:
            GH_TOKEN: ${{ github.token }}
