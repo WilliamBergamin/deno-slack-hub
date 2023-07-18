@@ -43,6 +43,6 @@ jobs:
            GH_TOKEN: ${{ github.token }}
 
       - name: Create PR
-        run: gh pr create --title "The bug is fixed" --body "Everything works again"
+        run: gh pr create --title "New generated changes" --body "Everything works again"
         env:
            GH_TOKEN: ${{ github.token }}
