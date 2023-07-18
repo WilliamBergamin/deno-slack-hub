@@ -39,7 +39,6 @@ jobs:
         continue-on-error: true
         run: |
             git checkout -b $BRANCH_NAME
-            git commit -a -m "Latest generated changes"
             git commit -a -m "Automated commit: Latest generated changes from schedule action"
 
       - name: Create Pull Request
