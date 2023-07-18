@@ -15,7 +15,6 @@ jobs:
     env:
       # the version of deno used by Run on Slack (v1.31.1)
       deno-version: v1.31.1
-      BRANCH_NAME: generate_${{$(date +"%Y-%m-%d_%H:%")}}
 
     steps:
       - name: Setup repo
@@ -25,6 +24,7 @@ jobs:
         uses: denoland/setup-deno@v1
         with:
           deno-version: ${{ env.deno-version }}
+      
       - name: Setup Git config
         run: |
             git config user.name github-actions
