@@ -46,6 +46,7 @@ jobs:
         if: ${{ success() }}
         run: |
             git push --set-upstream origin $BRANCH_NAME
-            gh pr create --fill
+            gh pr create --label "enhancement" --title "Latest generated changes" --body \
+            "## Summary\nThis PR introduces the latest generated changes to the typescript connectors enabling developpers to access the newest Slacks features"
         env:
            GH_TOKEN: ${{ github.token }}
