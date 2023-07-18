@@ -31,9 +31,7 @@ jobs:
 
       - name: Commit changes
         run: |
-           git branch new-generation
-           git add --all
-           git commit -m "new changes"
+           git checkout -b new-branch
         env:
            GH_TOKEN: ${{ github.token }}
 
