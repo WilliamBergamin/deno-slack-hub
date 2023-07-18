@@ -3,7 +3,7 @@ name: Generate
 on:
   push:
     branches: [ main ]
-    
+
 jobs:
   generate:
     permissions:
@@ -35,6 +35,7 @@ jobs:
         run: ./scripts/generate
       
       - name: Commit changes
+        id: commit
         continue-on-error: true
         run: |
             git checkout -b $BRANCH_NAME
@@ -42,7 +43,7 @@ jobs:
             git commit -a -m "Automated commit: Latest generated changes from schedule action"
 
       - name: Create Pull Request
-        if: ${{ success() }}
+        if: ${{ steps.commit.outcome == 'success' }}
         run: |
             git push --set-upstream origin $BRANCH_NAME
             gh pr create -r "WilliamBergamin" --label "enhancement" --title "Latest generated changes" --body \
