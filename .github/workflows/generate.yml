@@ -37,7 +37,7 @@ jobs:
            git config user.email github-actions@github.com
            git checkout -b new-branch
            git commit -a -m "new changes"
-           git --set-upstream origin new-branch
+           git push --set-upstream origin new-branch
         env:
            GH_TOKEN: ${{ github.token }}
 
