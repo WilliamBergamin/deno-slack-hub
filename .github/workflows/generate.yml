@@ -9,8 +9,8 @@ on:
 jobs:
   generate:
     permissions:
-       contents: write
-       pull-requests: write
+        contents: write
+        pull-requests: write
     runs-on: ubuntu-latest
     env:
       # the version of deno used by Run on Slack (v1.31.1)
@@ -31,18 +31,19 @@ jobs:
 
       - name: Setup Git config
         run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+            git config user.name github-actions
+            git config user.email github-actions@github.com
       
       - name: Commit changes
+        continue-on-error: true
         run: |
-           git checkout -b $BRANCH_NAME
-           git commit -a -m "Changes "
-           git push --set-upstream origin new-branch
-        env:
-           GH_TOKEN: ${{ github.token }}
+            git checkout -b $BRANCH_NAME
+            git commit -a -m "Latest generated changes"
 
-      - name: Create PR
-        run: gh pr create --title "New generated changes" --body "Everything works again"
+      - name: Create Pull Request
+        if: ${{ success() }}
+        run: |
+            git push --set-upstream origin $BRANCH_NAME
+            gh pr create --fill
         env:
            GH_TOKEN: ${{ github.token }}
