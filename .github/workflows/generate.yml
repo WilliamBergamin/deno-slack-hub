@@ -12,6 +12,8 @@ on:
 
 jobs:
   generate:
+    permissions:
+       pull-requests: write
     runs-on: ubuntu-latest
     env:
       # the version of deno used by Run on Slack (v1.31.1)
