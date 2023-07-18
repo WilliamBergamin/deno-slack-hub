@@ -15,6 +15,7 @@ jobs:
     env:
       # the version of deno used by Run on Slack (v1.31.1)
       deno-version: v1.31.1
+      BRANCH_NAME: generate_$(date +"%Y-%m-%d_%H:%")
 
     steps:
       - name: Setup repo
@@ -28,12 +29,15 @@ jobs:
       - name: Run generation script
         run: ./scripts/generate
 
+      - name: Setup Git config
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      
       - name: Commit changes
         run: |
-           git config user.name github-actions
-           git config user.email github-actions@github.com
-           git checkout -b new-branch
-           git commit -a -m "new changes"
+           git checkout -b $BRANCH_NAME
+           git commit -a -m "Changes "
            git push --set-upstream origin new-branch
         env:
            GH_TOKEN: ${{ github.token }}
