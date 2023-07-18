@@ -31,7 +31,7 @@ jobs:
             git config user.email github-actions@github.com
 
       - name: Set BRANCH_NAME
-        run: echo "BRANCH_NAME=generate_$(date +"%Y-%m-%d_%H:%")" >> $GITHUB_ENV
+        run: echo "BRANCH_NAME=generate_$(date +"%Y-%m-%d_%H-%M")" >> $GITHUB_ENV
 
       - name: Run generation script
         run: ./scripts/generate
