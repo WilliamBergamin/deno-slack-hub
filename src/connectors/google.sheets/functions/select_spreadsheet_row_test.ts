@@ -13,7 +13,6 @@ Deno.test("SelectSpreadsheetRow can be used as a Slack function in a workflow st
     spreadsheet_id: "test",
     sheet_title: "test",
     column_name: "test",
-    cell_value: "test",
     google_access_token: "test",
   });
   const actual = testWorkflow.steps[0].export();
@@ -26,7 +25,6 @@ Deno.test("SelectSpreadsheetRow can be used as a Slack function in a workflow st
     spreadsheet_id: "test",
     sheet_title: "test",
     column_name: "test",
-    cell_value: "test",
     google_access_token: "test",
   });
 });
@@ -41,9 +39,11 @@ Deno.test("All outputs of Slack function SelectSpreadsheetRow should exist", () 
     spreadsheet_id: "test",
     sheet_title: "test",
     column_name: "test",
-    cell_value: "test",
     google_access_token: "test",
   });
   assertExists(step.outputs.column_values);
   assertExists(step.outputs.row_index);
+  assertExists(step.outputs.spreadsheet_url);
+  assertExists(step.outputs.timestamp_started);
+  assertExists(step.outputs.timestamp_completed);
 });
