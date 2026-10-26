@@ -4,7 +4,7 @@ import { Schema } from "../../../deps.ts";
 
 export default DefineConnector({
   callback_id: "A04T6GE3LEB#/functions/edit_issue",
-  title: "Edit an Issue",
+  title: "Edit an issue",
   description: "Edit a JIRA Cloud issue",
   input_parameters: {
     properties: {
@@ -16,8 +16,8 @@ export default DefineConnector({
       project: { type: Schema.types.string, title: "Project" },
       issue_id: {
         type: Schema.types.string,
-        description: "Issue ID",
-        title: "Issue ID",
+        description: "Search issue",
+        title: "Issue key",
       },
       priority: {
         type: Schema.types.string,
@@ -31,22 +31,17 @@ export default DefineConnector({
       },
       summary: {
         type: Schema.types.string,
-        description: "Summary of the bug or issue ...",
+        description: "Summary of the bug or issue...",
         title: "Summary",
       },
       description: {
         type: Schema.types.string,
-        description: "Description of the bug or issue ...",
+        description: "Description of the bug or issue...",
         title: "Description",
       },
+      custom_fields: { type: Schema.types.object, title: "Additional inputs" },
     },
-    required: [
-      "atlassian_access_token",
-      "jira_domain",
-      "project",
-      "issue_id",
-      "summary",
-    ],
+    required: ["atlassian_access_token", "jira_domain", "project", "issue_id"],
   },
   output_parameters: {
     properties: {
@@ -65,6 +60,7 @@ export default DefineConnector({
         description: "Issue ID",
         title: "Issue ID",
       },
+      issue_url: { type: Schema.types.string, title: "Issue URL" },
       summary: {
         type: Schema.types.string,
         description: "Summary",
